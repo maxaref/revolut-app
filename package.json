@@ -27,9 +27,9 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "jest",
     "eject": "react-scripts eject",
-    "lint": "eslint --ext .js,.jsx,.ts,.tsx src --color",
+    "lint": "eslint --ext .ts,.tsx src --color",
     "format": "prettier --write ./src"
   },
   "eslintConfig": {
@@ -63,8 +63,11 @@
     "eslint-plugin-prettier": "3.1.4",
     "eslint-plugin-react": "7.20.6",
     "eslint-plugin-react-hooks": "4.1.0",
+    "jest": "24.9.0",
+    "jest-puppeteer": "^4.4.0",
     "prettier": "2.0.5",
     "prettier-eslint": "11.0.0",
-    "prettier-eslint-cli": "5.0.0"
+    "prettier-eslint-cli": "5.0.0",
+    "puppeteer": "^5.2.1"
   }
 }

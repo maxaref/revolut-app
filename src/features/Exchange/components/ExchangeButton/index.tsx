@@ -9,7 +9,7 @@ export interface IExchangeButtonProps {
 
 export const ExchangeButton = ({ disabled, onClick }: IExchangeButtonProps) => (
   <Button
-    className={styles.exchangeButton}
+    className={`tests__exchangeButton ${styles.exchangeButton}`}
     disabled={disabled}
     onClick={onClick}
   >

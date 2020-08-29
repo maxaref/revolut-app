@@ -21,6 +21,6 @@
     "jsx": "react"
   },
   "include": [
-    "src"
+    "src", "jest-puppeteer.config.js"
   ]
 }

@@ -14,17 +14,20 @@ export interface IExchangeCurrencyProps {
 export const ExchangeResult = ({ currencyFrom, currencyTo, amount, ratio }:IExchangeCurrencyProps) => (
   <div className={styles.wrapper}>
     <div className={styles.result}>
-      {amount ? (
-        <>
-          +
-          {(amount / ratio).toFixed(2)}
-        </>
-      ) : null}
+      <span className="tests__result">
+        {amount ? (
+          <>
+            +
+            {(amount / ratio).toFixed(2)}
+          </>
+        ) : null}
+      </span>
 
       &nbsp;
     </div>
     <div className={styles.ratio}>
-      {`${signByCurrency[currencyTo]}1 = ${signByCurrency[currencyFrom]}${ratio.toFixed(2)}`}
+      {`${signByCurrency[currencyTo]}1 = ${signByCurrency[currencyFrom]}`}
+      <span className="tests__ratio">{ratio.toFixed(2)}</span>
     </div>
   </div>
 );

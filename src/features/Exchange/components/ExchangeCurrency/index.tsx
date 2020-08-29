@@ -10,12 +10,12 @@ export interface IExchangeCurrencyProps {
 
 export const ExchangeCurrency = ({ currency, balance }:IExchangeCurrencyProps) => (
   <div>
-    <div className={styles.title}>{currency}</div>
+    <div className={`tests__currency ${styles.title}`}>{currency}</div>
     <div className={styles.balance}>
       You have
       {' '}
       {signByCurrency[currency]}
-      {balance}
+      <span className="tests__balance">{balance}</span>
     </div>
   </div>
 );
