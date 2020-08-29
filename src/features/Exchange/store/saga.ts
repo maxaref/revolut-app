@@ -5,7 +5,7 @@ import { setCurrenciesRates } from './slices/currencies/ratesSlice';
 
 export function* updateCurrenciesRates() {
   try {
-    const baseCurrency = yield select((store: IStore) => store.currencies.base);
+    const baseCurrency = yield select((store: IStore) => store.exchange.currencies.base);
     const rates = yield api.currencies.getRates(baseCurrency);
 
     yield put(setCurrenciesRates(rates));
@@ -17,10 +17,10 @@ export function* updateCurrenciesRates() {
 const updateAfter = 10000;
 
 export function* updateCurrenciesRatesInterval() {
-  while (true) {
-    yield updateCurrenciesRates();
-    yield delay(updateAfter);
-  }
+  // while (true) {
+  yield updateCurrenciesRates();
+  yield delay(updateAfter);
+  // }
 }
 
 export function* exchangeRootSaga() {

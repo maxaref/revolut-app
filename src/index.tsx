@@ -1,8 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import 'styles/index.scss';
 import { App } from 'components/App';
 import * as serviceWorker from './serviceWorker';
+
+import 'styles/index.scss';
+import 'react-responsive-carousel/lib/styles/carousel.min.css';
 
 ReactDOM.render(
   <React.StrictMode>

@@ -4,4 +4,9 @@ export enum CurrenciesEnum {
   GBP = 'GBP',
 }
 
+export const arrCurrencies = Object.values(CurrenciesEnum);
+
 export type ICurrenciesRates = Record<CurrenciesEnum, number>;
+
+
+export type IBalance = Record<CurrenciesEnum, number>;

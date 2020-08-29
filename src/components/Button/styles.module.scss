@@ -1,0 +1,15 @@
+@import'styles/colors';
+
+.button {
+  color: $text;
+  font-size: 1.3em;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+
+  &[disabled] {
+    color: $textSecondary;
+    cursor: default;
+  }
+}

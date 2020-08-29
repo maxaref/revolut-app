@@ -32,6 +32,10 @@
         },
       }
     ],
-    "@typescript-eslint/indent": "off"
-  }
+    "@typescript-eslint/indent": "off",
+    "no-shadow": "off",
+    "jsx-a11y/no-autofocus": "off",
+    "react/button-has-type": "off",
+    "no-restricted-imports": ["error", { "patterns": ["../*"] }],
+    "react/jsx-max-props-per-line": ["error", { "maximum": 1, "when": "always" }]  }
 }
