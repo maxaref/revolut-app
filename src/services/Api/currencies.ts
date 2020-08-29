@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { CurrenciesEnum, ICurrenciesRates } from 'features/Exchange/store';
 
-const appId = '4ffe283b81ca45029d18b624e8dcff99';
+const appId = 'c60c828ed6d74eeaba7c5352582686bd';
 const currencies = Object.values(CurrenciesEnum);
 
 export const getRates = (base: CurrenciesEnum) =>
