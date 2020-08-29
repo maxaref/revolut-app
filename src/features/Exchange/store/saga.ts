@@ -17,10 +17,10 @@ export function* updateCurrenciesRates() {
 const updateAfter = 10000;
 
 export function* updateCurrenciesRatesInterval() {
-  // while (true) {
-  yield updateCurrenciesRates();
-  yield delay(updateAfter);
-  // }
+  while (true) {
+    yield updateCurrenciesRates();
+    yield delay(updateAfter);
+  }
 }
 
 export function* exchangeRootSaga() {
