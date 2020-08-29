@@ -27,8 +27,6 @@ export const NumberInput = (
 
     if (isNaN(Number(newStringValue))) return;
 
-    setInsideValue(newStringValue);
-    
     let newValue = parseFloat(newStringValue);
 
     if (decimals && newValue) newValue = formatNumber(newValue, decimals);
@@ -36,12 +34,23 @@ export const NumberInput = (
     if (min !== undefined) newValue = Math.max(min, newValue);
     if (max !== undefined) newValue = Math.min(max, newValue);
 
-    onChange(newValue || 0);
+    if (!newValue) newValue = 0;
+
+    if (parseFloat(newStringValue) !== newValue) setInsideValue(newValue.toString());
+    else setInsideValue(newStringValue);
+
+    onChange(newValue);
   }, [decimals, onChange]);
 
-  useEffect(() => {
-    if (!autoFocus || !inputRef.current) return;
+
+  const focus = useCallback(() => {
+    if (!inputRef.current) return;
     inputRef.current.focus({ preventScroll: true });
+  }, []);
+
+  useEffect(() => {
+    if (!autoFocus) return;
+    focus();
   }, []);
 
   useEffect(() => {
@@ -54,7 +63,10 @@ export const NumberInput = (
   }, [insideValue, autoWidth]);
 
   useEffect(() => {
-    if (value !== parseFloat(insideValue)) setInsideValue(value.toString());
+    if (value !== parseFloat(insideValue)) {
+      setInsideValue(value.toString());
+      focus();
+    }
   }, [insideValue, value]);
 
   return (
