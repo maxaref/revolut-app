@@ -1,14 +1,14 @@
 module.exports = {
   preset: 'jest-puppeteer',
-  globals: {
-    URL: 'http://localhost:3000'
-  },
   testMatch: [
-    '**/tests/**/*.test.js'
+    '**/tests/**/*.test.ts'
   ],
-  rootDir: './src',
-  moduleNameMapper: {
-    '^/(.*)$': '<rootDir>/$1',
+  transform: {
+		"^.+\\.ts?$": "ts-jest"
   },
+  moduleNameMapper: {
+    '^tests/(.*)$': '<rootDir>/tests/$1',
+  },
+  rootDir: './src',
   verbose: true
 };

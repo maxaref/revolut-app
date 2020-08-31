@@ -1,6 +1,7 @@
-const { getAttr } = require('/tests/utils');
-const { mockApi } = require('/tests/mockApi');
-const openExchangeMock = require('./openExchangeMock');
+import { getAttr } from 'tests/utils';
+import { mockApi } from 'tests/mockApi';
+import { url } from 'tests/config';
+import openExchangeMock from './openExchangeMock.json';
 
 const timeout = 10000;
 
@@ -9,7 +10,8 @@ const fromSelector = '.carousel-root:nth-of-type(1)';
 const fromSelectedSelector = `${fromSelector} .slide.selected`;
 const toSelector = '.carousel-root:nth-of-type(2)';
 const toSelectedSelector = `${toSelector} .slide.selected`;
-const getButtonNumberSelector = (type, num) => `${type === 'from' ? fromSelector : toSelector} .control-dots li:nth-of-type(${num})`;
+const getButtonNumberSelector = (type: 'from' | 'to', num: number) => 
+  `${type === 'from' ? fromSelector : toSelector} .control-dots li:nth-of-type(${num})`;
 
 
 const getCurrencyFrom = () => page.$(`${fromSelectedSelector} .tests__currency`);
@@ -22,7 +24,7 @@ const getRatio = () => page.$('.tests__ratio');
 beforeAll(async () => {
   mockApi('openexchangerates.org/api/latest.json', openExchangeMock);
 
-  await page.goto(URL, { waitUntil: 'domcontentloaded' });
+  await page.goto(url, { waitUntil: 'domcontentloaded' });
 });
 
 const blance = {

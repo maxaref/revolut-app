@@ -1,16 +1,21 @@
 
+type IMockValue = any;
 
-const mocks = [];
+interface IMock {
+  url: string;
+  mock: IMockValue;
+}
+
+const mocks: IMock[] = [];
 
 (async () => {
   await page.setRequestInterception(true);
 
   page.on('request', interceptedRequest => {
     const url = interceptedRequest.url();
-    const mock = mocks.some(item => url.includes(item));
+    const mock = mocks.find(item => url.includes(item.url));
     if (mock) {
       interceptedRequest.respond({
-        content: 'application/json',
         headers: {'Access-Control-Allow-Origin': '*'},
         body: JSON.stringify(mock.mock),
       });
@@ -20,8 +25,7 @@ const mocks = [];
   });
 })();
 
-module.exports = {
-  mockApi: async (url, mock) => {
-    mocks.push({ url, mock });
-  }
+
+export const mockApi = async (url: string, mock: IMockValue) => {
+  mocks.push({ url, mock });
 };
